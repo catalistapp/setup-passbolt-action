@@ -1,0 +1,40 @@
+name: 'Setup Passbolt CLI'
+description: 'Install and configure Passbolt CLI for use in GitHub Actions'
+
+inputs:
+  server-address:
+    description: 'Passbolt server URL'
+    required: true
+  password:
+    description: 'Passbolt user password'
+    required: true
+  private-key:
+    description: 'Passbolt private key'
+    required: true
+  version:
+    description: 'Passbolt CLI version'
+    required: false
+    default: '0.4.1'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Cache Passbolt CLI
+      id: cache-passbolt
+      uses: actions/cache@v4
+      with:
+        path: go-passbolt-cli.deb
+        key: passbolt-cli-v${{ inputs.version }}
+
+    - name: Download and install Passbolt CLI
+      shell: bash
+      run: |
+        if [ ! -f go-passbolt-cli.deb ]; then
+          curl -L "https://github.com/passbolt/go-passbolt-cli/releases/download/v${{ inputs.version }}/go-passbolt-cli_${{ inputs.version }}_linux_amd64.deb" -o go-passbolt-cli.deb
+        fi
+        sudo dpkg -i go-passbolt-cli.deb
+
+    - name: Configure Passbolt
+      shell: bash
+      run: |
+        passbolt configure --serverAddress ${{ inputs.server-address }} --userPassword '${{ inputs.password }}' --userPrivateKey '${{ inputs.private-key }}'
