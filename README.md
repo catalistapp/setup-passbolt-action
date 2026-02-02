@@ -14,12 +14,12 @@ GitHub Action to install and configure [Passbolt CLI](https://github.com/passbol
 
 ## Inputs
 
-| Input | Description | Required | Default |
-|-------|-------------|----------|---------|
-| `server-address` | Passbolt server URL | Yes | - |
-| `password` | Passbolt user password | Yes | - |
-| `private-key` | Passbolt private key | Yes | - |
-| `version` | Passbolt CLI version | No | `0.4.1` |
+| Input            | Description                  | Required | Default |
+|------------------|------------------------------|----------|---------|
+| `server-address` | Passbolt server URL          | Yes      | -       |
+| `password`       | Passbolt user password       | Yes      | -       |
+| `private-key`    | Passbolt private key         | Yes      | -       |
+| `version`        | Passbolt CLI version         | No       | `0.4.1` |
 
 ## Example
 
