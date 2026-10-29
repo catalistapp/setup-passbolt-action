@@ -5,7 +5,7 @@ GitHub Action to install and configure [Passbolt CLI](https://github.com/passbol
 ## Usage
 
 ```yaml
-- uses: centrallgtech/setup-passbolt-action@v1
+- uses: catalistapp/setup-passbolt-action@v1
   with:
     server-address: ${{ vars.PASSBOLT_URL }}
     password: ${{ secrets.PASSBOLT_PASS }}
@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: centrallgtech/setup-passbolt-action@v1
+      - uses: catalistapp/setup-passbolt-action@v1
         with:
           server-address: ${{ vars.PASSBOLT_URL }}
           password: ${{ secrets.PASSBOLT_PASS }}

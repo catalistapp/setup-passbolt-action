@@ -21,7 +21,7 @@ runs:
   steps:
     - name: Cache Passbolt CLI
       id: cache-passbolt
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: go-passbolt-cli.deb
         key: passbolt-cli-v${{ inputs.version }}
